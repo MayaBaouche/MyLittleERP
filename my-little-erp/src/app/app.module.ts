@@ -52,6 +52,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './utils/about/about.component';
 import { ErrorComponent } from './utils/error/error.component';
 import { HomeComponent } from './utils/home/home.component';
+import { FooterComponent } from './formcomponent/footer/footer.component';
+import { HeaderComponent } from './formcomponent/header/header.component';
+import { from } from 'rxjs';
+import { WelcomeComponent } from './formcomponent/welcome/welcome.component';
 
 @NgModule({
   declarations: [

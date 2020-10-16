@@ -2,3 +2,15 @@ nav{
     margin-bottom: 0px;
     height : 5%;
 }
+span{
+    margin: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+div{
+    margin :0%;
+    padding: 0%;
+    width:100%;
+    background-color: beige;
+}
