@@ -7,7 +7,9 @@ export const environment = {
   api: {
     url: "https://someurl.com",
     routes: {
-      equipe: "/api/teams"
+      equipe: "/api/equipe/",
+      devis: "/api/devis/",
+      commande: "/api/commande/"
     }
   }
 };
