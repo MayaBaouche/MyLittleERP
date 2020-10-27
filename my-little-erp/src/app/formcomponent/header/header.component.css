@@ -1,12 +1,20 @@
-span{
+li {
     margin: 0%;
     margin-left: 5%;
     margin-right: 5%;
+    display: inline;
 }
 
 div{
     margin :0%;
     padding: 0%;
     width:100%;
+    background-color: beige;
+}
+.selected {
+    background-color: rgb(240, 240, 109);
+}
+
+.notselected{
     background-color: beige;
 }

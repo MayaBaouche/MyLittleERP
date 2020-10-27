@@ -1,14 +1,19 @@
 <div>
-    <span>
+    <ul>
+    <li id="li1" [routerLink]="['/welcome']" routerLinkActive="router-link-active" (click)="onClickMenu('li1')" class="{{isSelected1 ? 'selected' : 'notselected' }}">
         Accueil
-    </span>
-    <span>
+    </li>
+    <li id="li2" [routerLink]="['']" routerLinkActive="router-link-active" (click)="onClickMenu('li2')" class="{{isSelected2 ? 'selected' : 'notselected' }}">
         Devis
-    </span>
-    <span>
+    </li>
+    <li id="li3" [routerLink]="['']" routerLinkActive="router-link-active" (click)="onClickMenu('li3')" class="{{isSelected3 ? 'selected' : 'notselected' }}">
         Commande
-    </span>
-    <span>
+    </li>
+    <li id="li4" [routerLink]="['']" routerLinkActive="router-link-active" (click)="onClickMenu('li4')" class="{{isSelected4 ? 'selected' : 'notselected' }}">
+        Equipe
+    </li>
+    <li id="li5" [routerLink]="['']" routerLinkActive="router-link-active" (click)="onClickMenu('li5')" class="{{isSelected5 ? 'selected' : 'notselected' }}">
         Connexion
-    </span>
+    </li>
+    </ul>
 </div>
