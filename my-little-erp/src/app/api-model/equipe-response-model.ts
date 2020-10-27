@@ -1,8 +1,8 @@
-export class EquipeModel {
+export class EquipeResponseModel {
     public Members: MemberModel[];
 }
 
-export class MemberModel {
+export class MemberResponseModel {
     public Nom: String = '';
     public Prenom: String = '';
     public Adresse: String = '';
