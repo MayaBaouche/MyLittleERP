@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: {
+    url: "https://someurl.com",
+    routes: {
+      equipe: "/api/teams"
+    }
+  }
 };
 
 /*
