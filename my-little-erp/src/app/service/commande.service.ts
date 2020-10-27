@@ -2,6 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { CommandeResponseModel } from '../api-model/commande-response-model';
+import { CommandeRequestModel } from '../api-model/commande-request-model';
+import { environment } from '../../environments/environment.prod';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,34 +13,34 @@ export class CommandeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  GetCommandes(): Observable<any> {
-    return null;
+  GetCommande(): Observable<CommandeResponseModel[]> {
+    return this.httpClient.get<CommandeResponseModel[]>
+      (environment.api.url + environment.api.routes.commande);
   }
 
-  CreateCommande(): Observable<any> {
+  CreateCommande(payload: CommandeRequestModel): Observable<CommandeResponseModel> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return null;
+    return this.httpClient.post<CommandeResponseModel>
+      (environment.api.url + environment.api.routes.commande, payload, httpOptions);
   }
 
-  UpdateCommande(): Observable<any> {
+  UpdateCommande(payload: CommandeRequestModel, id: string): Observable<CommandeResponseModel> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return null;
+    return this.httpClient.put<CommandeResponseModel>
+      (environment.api.url + environment.api.routes.commande + "/" + id, payload, httpOptions);
   }
 
-  DeleteCommande() : Observable<any>{
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    return null;
+  DeleteCommande(id: string): Observable<any> {
+
+    return this.httpClient.delete<any>
+      (environment.api.url + environment.api.routes.commande + "/" + id);
   }
 }

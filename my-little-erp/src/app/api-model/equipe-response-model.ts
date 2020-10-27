@@ -1,5 +1,5 @@
 export class EquipeResponseModel {
-    public Members: MemberModel[];
+    public Members: MemberResponseModel[];
 }
 
 export class MemberResponseModel {
