@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { EquipeService } from './service/equipe.service';
 import { DevisService } from './service/devis.service';
 import { CommandeService } from './service/commande.service';
-import { DevisFormComponent } from './DevisCreateForm/devis-form/devis-form.component';
+import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { DevisFormComponent } from './DevisCreateForm/devis-form/devis-form.comp
     DevisFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [EquipeService, DevisService, CommandeService],
   bootstrap: [AppComponent]

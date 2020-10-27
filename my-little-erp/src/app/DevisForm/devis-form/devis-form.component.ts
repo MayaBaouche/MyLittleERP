@@ -3,15 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DevisRequestModel } from 'src/app/api-model/devis-request-model';
 
 @Component({
-  selector: 'app-devis-create-form',
-  templateUrl: './devis-create-form.component.html',
-  styleUrls: ['./devis-create-form.component.css']
+  selector: 'app-devis-form',
+  templateUrl: './devis-form.component.html',
+  styleUrls: ['./devis-form.component.css']
 })
 export class DevisFormComponent implements OnInit {
 
   devisForm: FormGroup;
   devisRequest: DevisRequestModel;
   currentMode: string;
+  valid: boolean;
 
   constructor(private formBuilder: FormBuilder) { }
 
