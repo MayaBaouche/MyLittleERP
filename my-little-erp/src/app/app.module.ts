@@ -58,12 +58,7 @@ import { from } from 'rxjs';
 import {RouterModule,Routes} from '@angular/router'
 import { WelcomeComponent } from './formcomponent/welcome/welcome.component';
 
-const routes: Routes = [
-  {
-    path:'',
-    component:WelcomeComponent
-  }
-];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,8 +76,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,    
-    AppRoutingModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
+    //RouterModule.forRoot(routes),   
   ],
   providers: [EquipeService,
               DevisService,
