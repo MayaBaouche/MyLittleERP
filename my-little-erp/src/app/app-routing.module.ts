@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './utils/home/home.component';
 import {ErrorComponent} from './utils/error/error.component';
 import {AboutComponent} from './utils/about/about.component';
+import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
 
 // routes
 const appRoutes: Routes = [
@@ -19,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'equipe', component: ErrorComponent // TODO change with right component name \o/
   },
   // devis
-  { path: 'devis-list', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'devis-list', component: DevisFormComponent // TODO change with right component name \o/
   },
   { path: 'devis-new', component: ErrorComponent // TODO change with right component name \o/
   },
