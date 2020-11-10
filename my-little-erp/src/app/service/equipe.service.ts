@@ -12,7 +12,7 @@ export class EquipeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  GetEquipe(): Observable<EquipeResponseModel> {
+  GetEquipe(): Observable<EquipeResponseModel[]> {
     return this.httpClient.get<EquipeResponseModel[]>
       (environment.api.url + environment.api.routes.equipe);
   }

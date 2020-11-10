@@ -13,24 +13,24 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent
   },
   // login
-  { path: 'signin', component: ErrorComponent
+  { path: 'signin', component: ErrorComponent // TODO change with right component name \o/
   },
   // équipe
-  { path: 'equipe', component: ErrorComponent
+  { path: 'equipe', component: ErrorComponent // TODO change with right component name \o/
   },
   // devis
-  { path: 'devis-list', component: ErrorComponent
+  { path: 'devis-list', component: ErrorComponent // TODO change with right component name \o/
   },
-  { path: 'devis-new', component: ErrorComponent
+  { path: 'devis-new', component: ErrorComponent // TODO change with right component name \o/
   },
-  { path: 'devis-update', component: ErrorComponent
+  { path: 'devis-update', component: ErrorComponent // TODO change with right component name \o/
   },
   // commande
-  { path: 'commande-list', component: ErrorComponent
+  { path: 'commande-list', component: ErrorComponent // TODO change with right component name \o/
   },
-  { path: 'commande-new', component: ErrorComponent
+  { path: 'commande-new', component: ErrorComponent // TODO change with right component name \o/
   },
-  { path: 'commande-update', component: ErrorComponent
+  { path: 'commande-update', component: ErrorComponent // TODO change with right component name \o/
   },
   // others
   { path: 'about', component: AboutComponent
