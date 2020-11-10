@@ -12,6 +12,9 @@ import { WelcomeComponent } from './formcomponent/welcome/welcome.component';
 import { EquipeService } from './service/equipe.service';
 import { DevisService } from './service/devis.service';
 import { CommandeService } from './service/commande.service';
+import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './utils/about/about.component';
@@ -26,11 +29,15 @@ import { HomeComponent } from './utils/home/home.component';
     FooterComponent,
     HeaderComponent,
     WelcomeComponent,
-    HomeComponent
+    HomeComponent,
+	DevisFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+	AppRoutingModule
   ],
   providers: [EquipeService, DevisService, CommandeService],
   bootstrap: [AppComponent]
