@@ -12,6 +12,26 @@ const appRoutes: Routes = [
   // home
   { path: '', component: HomeComponent
   },
+  // login
+  { path: 'signin', component: ErrorComponent
+  },
+  // équipe
+  { path: 'equipe', component: ErrorComponent
+  },
+  // devis
+  { path: 'devis-list', component: ErrorComponent
+  },
+  { path: 'devis-new', component: ErrorComponent
+  },
+  { path: 'devis-update', component: ErrorComponent
+  },
+  // commande
+  { path: 'commande-list', component: ErrorComponent
+  },
+  { path: 'commande-new', component: ErrorComponent
+  },
+  { path: 'commande-update', component: ErrorComponent
+  },
   // others
   { path: 'about', component: AboutComponent
   },
