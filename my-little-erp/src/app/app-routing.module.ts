@@ -7,11 +7,14 @@ import {HomeComponent} from './utils/home/home.component';
 import {ErrorComponent} from './utils/error/error.component';
 import {AboutComponent} from './utils/about/about.component';
 import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
+<<<<<<< HEAD
 import { AuthGuard } from './guard/auth.guard';
 import { EquipeFormComponent } from './equipe-form/equipe-form.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
+=======
+>>>>>>> fix : routing pour le composant devisNewForm
 
 // routes
 const appRoutes: Routes = [
