@@ -7,6 +7,7 @@ import { DevisService } from './service/devis.service';
 import { CommandeService } from './service/commande.service';
 import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [EquipeService, DevisService, CommandeService],
   bootstrap: [AppComponent]

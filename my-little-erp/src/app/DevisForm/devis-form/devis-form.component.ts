@@ -16,7 +16,7 @@ export class DevisFormComponent implements OnInit {
   novalid: boolean = false;
   errorMessage: string;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private service: DevisService) { }
 
   ngOnInit(): void {
     this.buildForm("other");
@@ -47,9 +47,17 @@ export class DevisFormComponent implements OnInit {
       this.errorMessage = "Veuillez vérifier les différents champs du formulaire, le mail doit être sous la forme de mail@mail.extension";
     }
     else {
+      this.devisRequest.Prospect = this.devisForm.value.Prospect;
+      this.devisRequest.Typologie = this.devisForm.value.Typologie;
+      this.devisRequest.Charge = this.devisForm.value.Charge;
+      this.devisRequest.DebutDemande = this.devisForm.value.DebutDemande;
+      this.devisRequest.FinDemande = this.devisForm.value.FinDemande;
+      this.devisRequest.Statut = this.devisForm.value.Statut;
+      this.devisRequest.Chance = this.devisForm.value.Chance;
+      this.devisRequest.DateDeFaisabilite = this.devisForm.value.DateDeFaisabilite;
       this.novalid = false;
       console.log(this.devisForm.status);
-
+      this.service.CreateDevis(this.devisRequest);
     }
     
   }
