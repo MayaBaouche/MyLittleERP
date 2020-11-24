@@ -1,20 +1,34 @@
-li {
+/*li {
     margin: 0%;
-    margin-left: 5%;
+    margin-left: 10%;
     margin-right: 5%;
-    display: inline;
+    
+}
+ul{
+    width : 100%;
+    margin-bottom: 1%;
+    margin-top: 1%;
 }
 
 div{
     margin :0%;
     padding: 0%;
-    width:100%;
+   
+   /* width:100%;
     background-color: beige;
 }
 .selected {
-    background-color: rgb(240, 240, 109);
+    color: lightcyan;
+   /* background-color: rgb(240, 240, 109);
 }
 
 .notselected{
-    background-color: beige;
+    color : white;
+   /* background-color: beige;
+}/*
+header{
+    height: 10%;
+}*/
+nav{
+    margin-bottom: 0px;
 }
