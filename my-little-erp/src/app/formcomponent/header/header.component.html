@@ -1,19 +1,23 @@
-<div>
-    <ul>
-    <li [routerLink]="['']" routerLinkActive="router-link-active" id="li1" (click)="onClickMenu('li1')" class="{{isSelected1 ? 'selected' : 'notselected' }}">
-        Accueil
-    </li>
-    <li [routerLink]="['devis-list']" routerLinkActive="router-link-active" id="li2" (click)="onClickMenu('li2')" class="{{isSelected2 ? 'selected' : 'notselected' }}">
-        Devis
-    </li>
-    <li [routerLink]="['commande-list']" routerLinkActive="router-link-active" id="li3" (click)="onClickMenu('li3')" class="{{isSelected3 ? 'selected' : 'notselected' }}">
-        Commande
-    </li>
-    <li [routerLink]="['equipe']" routerLinkActive="router-link-active" id="li4"  (click)="onClickMenu('li4')" class="{{isSelected4 ? 'selected' : 'notselected' }}">
-        Equipe
-    </li>
-    <li [routerLink]="['signin']" routerLinkActive="router-link-active" id="li5"  (click)="onClickMenu('li5')" class="{{isSelected5 ? 'selected' : 'notselected' }}">
-        Connexion
-    </li>
-    </ul>
-</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <a [routerLink]="['']" class="navbar-brand" (click)="onClickMenu('li1')">My Little ERP</a>
+        <ul class="nav navbar-nav mr-auto ml-auto mb-0 mt-0">
+            <!--<li [routerLink]="['']" routerLinkActive="router-link-active" id="li1" (click)="onClickMenu('li1')" class="nav-item">
+            <a class="nav-link"> Accueil</a>
+            </li>-->
+            <li [routerLink]="['devis-list']" routerLinkActive="router-link-active" id="li2" (click)="onClickMenu('li2')" class="nav-item {{isSelected2? 'active' : '' }}">
+                <a class="nav-link active"> Devis</a>
+            </li>
+            <li [routerLink]="['commande-list']" routerLinkActive="router-link-active" id="li3" (click)="onClickMenu('li3')" class="nav-item {{isSelected3? 'active' : '' }}">
+                <a class="nav-link"> Commandes</a>
+            </li>
+            <li [routerLink]="['equipe']" routerLinkActive="router-link-active" id="li4"  (click)="onClickMenu('li4')" class="nav-item {{isSelected4? 'active' : '' }}">
+                <a class="nav-link"> Equipe</a>
+            </li>
+            <li [routerLink]="['signin']" routerLinkActive="router-link-active" id="li5"  (click)="onClickMenu('li5')" class="nav-item {{isSelected5? 'active' : '' }}">
+                <a class="nav-link"> Connexion</a>
+            </li>
+        </ul>
+    </div>
+</nav>
