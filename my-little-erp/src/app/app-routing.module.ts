@@ -7,6 +7,10 @@ import {HomeComponent} from './utils/home/home.component';
 import {ErrorComponent} from './utils/error/error.component';
 import {AboutComponent} from './utils/about/about.component';
 import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
+import { AuthGuard } from './guard/auth.guard';
+
+const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
+const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
 
 // routes
 const appRoutes: Routes = [
@@ -14,13 +18,13 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent
   },
   // login
-  { path: 'signin', component: ErrorComponent // TODO change with right component name \o/
-  },
+    { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
+    { path: 'account', loadChildren: accountModule },
   // équipe
   { path: 'equipe', component: ErrorComponent // TODO change with right component name \o/
   },
   // devis
-  { path: 'devis-list', component: DevisFormComponent // TODO change with right component name \o/
+  { path: 'devis-list', component: DevisFormComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
   { path: 'devis-new', component: ErrorComponent // TODO change with right component name \o/
   },
