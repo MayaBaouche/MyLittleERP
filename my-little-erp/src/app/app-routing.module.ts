@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   { path: 'equipe', component: ErrorComponent // TODO change with right component name \o/
   },
   // devis
-  { path: 'devis-list', component: DevisFormComponent // TODO change with right component name \o/
+  { path: 'devis-list', component: DevisFormComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
   { path: 'devis-new', component: ErrorComponent // TODO change with right component name \o/
   },
