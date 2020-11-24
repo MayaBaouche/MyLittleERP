@@ -34,7 +34,7 @@ export class DevisFormComponent implements OnInit {
         DebutDemande: ['', Validators.required],
         FinDemande: ['', Validators.required],
         Statut: ['', Validators.required],
-        Chance: ['', [Validators.required, Validators.email]],
+        Chance: ['', Validators.required],
         DateDeFaisabilite: ['', Validators.required]
       });
     }
@@ -44,20 +44,22 @@ export class DevisFormComponent implements OnInit {
     if (this.devisForm.status === 'INVALID') {
       console.log("erreur dans le form");
       this.novalid = true;
-      this.errorMessage = "Veuillez vérifier les différents champs du formulaire, le mail doit être sous la forme de mail@mail.extension";
+      this.errorMessage = "Veuillez vérifier les différents champs du formulaire";
     }
     else {
-      this.devisRequest.Prospect = this.devisForm.value.Prospect;
-      this.devisRequest.Typologie = this.devisForm.value.Typologie;
-      this.devisRequest.Charge = this.devisForm.value.Charge;
-      this.devisRequest.DebutDemande = this.devisForm.value.DebutDemande;
-      this.devisRequest.FinDemande = this.devisForm.value.FinDemande;
-      this.devisRequest.Statut = this.devisForm.value.Statut;
-      this.devisRequest.Chance = this.devisForm.value.Chance;
-      this.devisRequest.DateDeFaisabilite = this.devisForm.value.DateDeFaisabilite;
-      this.novalid = false;
-      console.log(this.devisForm.status);
-      this.service.CreateDevis(this.devisRequest);
+      if (this.currentMode === 'create') {
+        this.devisRequest.Prospect = this.devisForm.value.Prospect;
+        this.devisRequest.Typologie = this.devisForm.value.Typologie;
+        this.devisRequest.Charge = this.devisForm.value.Charge;
+        this.devisRequest.DebutDemande = this.devisForm.value.DebutDemande;
+        this.devisRequest.FinDemande = this.devisForm.value.FinDemande;
+        this.devisRequest.Statut = this.devisForm.value.Statut;
+        this.devisRequest.Chance = this.devisForm.value.Chance;
+        this.devisRequest.DateDeFaisabilite = this.devisForm.value.DateDeFaisabilite;
+        this.novalid = false;
+        console.log(this.devisForm.status);
+        this.service.CreateDevis(this.devisRequest);
+      }
     }
     
   }

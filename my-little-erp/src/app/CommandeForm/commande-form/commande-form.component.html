@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <!-- Le formulaire sera lié en action avec un bouton submit qui enclenchera la fonction onFormSubmit en lui envoyant les informations remplies par l'utilisateur -->
-                <form [formGroup]="devisForm">
+                <form [formGroup]="commandeForm">
                     <div class="form-group">
-                        <label>Prospect :</label>
-                        <input type="text" formControlName="Prospect" id="Prospect" class="form-control" required>
+                        <label>Client :</label>
+                        <input type="text" formControlName="Client" id="Client" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -35,10 +35,6 @@
                         <input type="text" formControlName="Statut" id="Statut" class="form-control" required>
                     </div>
 
-                    <div class="form-group">
-                        <label>Chance :</label>
-                        <input type="text" formControlName="Chance" id="Chance" class="form-control" required>
-                    </div>
 
                     <div class="form-group">
                         <label>DateDeFaisabilite :</label>
@@ -47,8 +43,8 @@
 
                     <div class="form-group">
                         <br>
-                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Créer devis</button>
-                        <button type="button" class="btn btn-danger" (click)="resetForm(devisForm)">Reset</button>
+                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Créer commande</button>
+                        <button type="button" class="btn btn-danger" (click)="resetForm(commandeForm)">Reset</button>
                     </div>
                 </form>
                 <div *ngIf="novalid">{{ errorMessage }}</div>
