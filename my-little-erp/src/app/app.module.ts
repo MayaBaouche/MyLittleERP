@@ -26,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './utils/about/about.component';
 import { ErrorComponent } from './utils/error/error.component';
 import { HomeComponent } from './utils/home/home.component';
+import { EquipeFormComponent } from './equipe-form/equipe-form.component';
 
 
 
@@ -56,7 +57,8 @@ export class ErrorInterceptor implements HttpInterceptor {
     HeaderComponent,
     WelcomeComponent,
     HomeComponent,
-	DevisFormComponent
+	DevisFormComponent,
+	EquipeFormComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import {ErrorComponent} from './utils/error/error.component';
 import {AboutComponent} from './utils/about/about.component';
 import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
 import { AuthGuard } from './guard/auth.guard';
+import { EquipeFormComponent } from './equipe-form/equipe-form.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
   // équipe
-  { path: 'equipe', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'equipe', component: EquipeFormComponent // TODO change with right component name \o/
   },
   // devis
   { path: 'devis-list', component: DevisFormComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
