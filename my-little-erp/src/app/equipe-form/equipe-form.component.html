@@ -1,0 +1,19 @@
+<div class="container" *ngFor="let item2 of teamMembers | async">
+    <div class="row">
+        <div class="panel panel-info ">
+            <div class="panel-heading">
+                <div class="panel panel-success" *ngFor="let item of item2.Members | async ">
+                    <div class="panel-heading">Nom : {{ item.Nom }}</div>
+                    <div class="panel-heading">Prénom : {{ item.Prenom }} </div>
+                    <div class="panel-heading">Adresse : {{ item.Adresse }}</div>
+                    <div class="panel-heading">Code postal : {{ item.CP }}</div>
+                    <div class="panel-heading">Ville : {{ item.Ville }}</div>
+                    <div class="panel-heading">Pays : {{ item.Pays }}</div>
+                    <div class="panel-heading">Téléphone : {{ item.Tel }}</div>
+                    <div class="panel-heading">Mail : {{ item.Mail }}</div>
+                    <div class="panel-heading">Fonction : {{ item.Fonction }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
