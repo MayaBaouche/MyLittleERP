@@ -1,6 +1,6 @@
 <!-- Composant formulaire, premier TP d'angular, partie HTML -->
 <div class="jumbotron">
-    <div class="container">
+    <div class="container" *ngIf="currentMode === 'creation'">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <!-- Le formulaire sera lié en action avec un bouton submit qui enclenchera la fonction onFormSubmit en lui envoyant les informations remplies par l'utilisateur -->
@@ -53,5 +53,8 @@
                 </form>
                 <div *ngIf="novalid">{{ errorMessage }}</div>
         </div>
+    </div>    
+    <div *ngIf="currentMode === 'consultation'">
+        <label>Consulter</label>
     </div>
 </div>

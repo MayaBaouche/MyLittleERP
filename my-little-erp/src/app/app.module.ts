@@ -48,7 +48,10 @@ export class ErrorInterceptor implements HttpInterceptor {
 }
 
 
+import { HttpClientModule } from '@angular/common/http';
+import {ListDevisModule} from './list-devis/list-devis.module';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AboutComponent } from './utils/about/about.component';
 import { ErrorComponent } from './utils/error/error.component';
 import { HomeComponent } from './utils/home/home.component';
@@ -75,9 +78,9 @@ import { WelcomeComponent } from './formcomponent/welcome/welcome.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,    
-    AppRoutingModule
-    //RouterModule.forRoot(routes),   
+    HttpClientModule,
+  AppRoutingModule, 
+  ListDevisModule
   ],
   providers: [EquipeService,
               DevisService,

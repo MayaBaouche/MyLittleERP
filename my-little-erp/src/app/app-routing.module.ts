@@ -7,14 +7,12 @@ import {HomeComponent} from './utils/home/home.component';
 import {ErrorComponent} from './utils/error/error.component';
 import {AboutComponent} from './utils/about/about.component';
 import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
-<<<<<<< HEAD
+import { ListDevisComponent } from './list-devis/list-devis.component';
 import { AuthGuard } from './guard/auth.guard';
 import { EquipeFormComponent } from './equipe-form/equipe-form.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
-=======
->>>>>>> fix : routing pour le composant devisNewForm
 
 // routes
 const appRoutes: Routes = [
@@ -28,11 +26,11 @@ const appRoutes: Routes = [
   { path: 'equipe', component: EquipeFormComponent // TODO change with right component name \o/
   },
   // devis
-  { path: 'devis-list', component: DevisFormComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
+  { path: 'devis-list', component: ListDevisComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
-  { path: 'devis-new', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'devis-new', component: DevisFormComponent
   },
-  { path: 'devis-update', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'devis-view/:id', component: DevisFormComponent 
   },
   // commande
   { path: 'commande-list', component: ErrorComponent // TODO change with right component name \o/

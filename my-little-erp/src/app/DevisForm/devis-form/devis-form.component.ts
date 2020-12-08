@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { DevisRequestModel } from 'src/app/api-model/devis-request-model';
 import { DevisService } from 'src/app/service/devis.service';
+import { DevisResponseModel } from '../../api-model/devis-response-model';
 
 @Component({
   selector: 'app-devis-form',
@@ -12,19 +15,30 @@ export class DevisFormComponent implements OnInit {
 
   devisForm: FormGroup;
   devisRequest: DevisRequestModel;
-  currentMode: string;
+  currentMode: string = '';
+
+  idDevis: number;
+  currentDevis: Observable<DevisResponseModel>;
+
   novalid: boolean = false;
   errorMessage: string;
 
-  constructor(private formBuilder: FormBuilder, private service: DevisService) { }
+  constructor(private formBuilder: FormBuilder, private service: DevisService, private route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
-    this.buildForm("other");
+    if (+this.route.snapshot.paramMap.get('id') == null) {   
+      this.currentMode = 'creation'; 
+    }
+    else {          
+      this.currentMode = 'consultation';
+    }    
+    this.buildForm(this.currentMode);
   }
 
   buildForm(typeOfForm: string) {
-    if (typeOfForm == 'consulter'){
-
+    if (typeOfForm == 'consultation') {
+      this.idDevis = +this.route.snapshot.paramMap.get('id');
+      this.currentDevis = this.getCurrentDevis();
     }
     else {
       this.devisForm = this.formBuilder.group({
@@ -42,7 +56,6 @@ export class DevisFormComponent implements OnInit {
 
   onSubmit() {
     if (this.devisForm.status === 'INVALID') {
-      console.log("erreur dans le form");
       this.novalid = true;
       this.errorMessage = "Veuillez vérifier les différents champs du formulaire, le mail doit être sous la forme de mail@mail.extension";
     }
@@ -59,11 +72,18 @@ export class DevisFormComponent implements OnInit {
       console.log(this.devisForm.status);
       this.service.CreateDevis(this.devisRequest);
     }
-    
   }
 
   resetForm(devisForm: FormGroup) {
     devisForm.reset();
+  }
+
+  getCurrentDevis(): Observable<DevisResponseModel> {
+    return this.service.GetDevisById(this.idDevis);
+  }
+
+  backToDevis() {
+    this.router.navigate(['/devis-list']);
   }
 
 }

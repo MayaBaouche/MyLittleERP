@@ -6,6 +6,14 @@ import { DevisResponseModel } from '../api-model/devis-response-model';
 import { DevisRequestModel } from '../api-model/devis-request-model';
 import { environment } from '../../environments/environment.prod';
 
+const httpHeaders= {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +23,12 @@ export class DevisService {
 
   GetDevis(): Observable<DevisResponseModel[]> {
     return this.httpClient.get<DevisResponseModel[]>
-      (environment.api.url + environment.api.routes.devis);
+      (environment.api.url + environment.api.routes.devis, {headers: httpHeaders.headers});
+  }
+
+  GetDevisById(id : number): Observable<DevisResponseModel> {
+    return this.httpClient.get<DevisResponseModel>
+      (environment.api.url + environment.api.routes.devis+"/"+id);
   }
 
   CreateDevis(payload: DevisRequestModel): Observable<DevisResponseModel> {
