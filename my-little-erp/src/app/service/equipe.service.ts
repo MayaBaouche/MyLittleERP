@@ -12,8 +12,8 @@ export class EquipeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  GetEquipe(): Observable<EquipeResponseModel[]> {
-    return this.httpClient.get<EquipeResponseModel[]>
+  GetEquipe(): Observable<MemberResponseModel[]> {
+    return this.httpClient.get<MemberResponseModel[]>
       (environment.api.url + environment.api.routes.equipe);
   }
 }

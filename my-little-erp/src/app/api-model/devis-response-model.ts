@@ -1,12 +1,12 @@
 export class DevisResponseModel {
-    public Id: Number;
-    public N: String = '';
-    public Prospect: String = '';
-    public Typologie: String = '';
-    public Charge: Number = 0;
-    public DebutDemande: Date;
-    public FinDemande: Date;
-    public Statut: String = '';
-    public Chance: Number = 0;
-    public DateDeFaisabilite: String = '';
+    public id: Number;
+    public n: String = '';
+    public prospect: String = '';
+    public typologie: String = '';
+    public charge: Number = 0;
+    public debutDemande: Date;
+    public finDemande: Date;
+    public statut: String = '';
+    public chance: Number = 0;
+    public dateDeFaisabilite: String = '';
 }

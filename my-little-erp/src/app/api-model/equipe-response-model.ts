@@ -8,15 +8,15 @@ export class EquipeResponseModel {
 }
 
 export class MemberResponseModel {
-    public Nom: String = '';
-    public Prenom: String = '';
-    public Adresse: String = '';
-    public CP: String = '';
-    public Ville: String = '';
-    public Pays: String = '';
-    public Tel: String = '';
-    public Mail: String = '';
-    public Fonction: String = '';
+    public nom: String = '';
+    public prenom: String = '';
+    public adresse: String = '';
+    public cp: String = '';
+    public ville: String = '';
+    public pays: String = '';
+    public tel: String = '';
+    public mail: String = '';
+    public fonction: String = '';
   /* // constructeur de test pour afficher et débugger les équipes sans le serveur : à modifier equipe form module
    constructor(Nom,Prenom,Adresse,CP,Ville,Pays,Tel,Mail,Fonction){
         this.Nom = Nom;

@@ -10,7 +10,7 @@ import {EquipeResponseModel,MemberResponseModel } from "../api-model/equipe-resp
 })
 export class EquipeFormComponent implements OnInit {
   // teamMembers : EquipeResponseModel[] = []; // variable pour test de la visu des équipes
-  teamMembers : Observable<EquipeResponseModel[]>;
+  teamMembers : Observable<MemberResponseModel[]>;
   
   constructor(private EquipeService : EquipeService) { 
    /* // jeu de test pour la visualisation des équipes : à modifier equipe service + equiperesponse model
