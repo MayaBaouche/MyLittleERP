@@ -51,7 +51,7 @@ const appRoutes: Routes = [
   // errors
   { path: '404', component: ErrorComponent
   },
-  { path: '**', component: ErrorComponent
+  { path: '**', component: ErrorComponent, canActivate: [AuthGuard]
   }
 ];
 
