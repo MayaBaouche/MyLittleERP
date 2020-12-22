@@ -22,21 +22,21 @@ const appRoutes: Routes = [
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
   // équipe
-  { path: 'equipe', component: EquipeFormComponent // TODO change with right component name \o/
+  { path: 'equipe', component: EquipeFormComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
   // devis
   { path: 'devis-list', component: DevisFormComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
-  { path: 'devis-new', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'devis-new', component: ErrorComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
-  { path: 'devis-update', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'devis-update', component: ErrorComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
   // commande
-  { path: 'commande-list', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'commande-list', component: ErrorComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
-  { path: 'commande-new', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'commande-new', component: ErrorComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
-  { path: 'commande-update', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'commande-update', component: ErrorComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
   },
   // others
   { path: 'about', component: AboutComponent
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
   // errors
   { path: '404', component: ErrorComponent
   },
-  { path: '**', component: ErrorComponent
+  { path: '**', component: ErrorComponent, canActivate: [AuthGuard]
   }
 ];
 
