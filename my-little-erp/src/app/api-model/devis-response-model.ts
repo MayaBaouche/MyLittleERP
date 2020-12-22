@@ -1,4 +1,5 @@
 export class DevisResponseModel {
+    public Id: Number;
     public N: String = '';
     public Prospect: String = '';
     public Typologie: String = '';

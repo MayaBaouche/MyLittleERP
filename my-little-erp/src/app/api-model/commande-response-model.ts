@@ -1,4 +1,5 @@
 export class CommandeResponseModel {
+    public Id: Number;
     public N: String = '';
     public Client: String = '';
     public Typologie: String = '';
