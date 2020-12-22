@@ -1,9 +1,9 @@
 export class CommandeRequestModel {
-    public Client: String;
-    public Typologie: String;
-    public Charge: Number;
-    public DebutDemande: Date;
-    public FinDemande: Date;
-    public Statut: String;
-    public DateDeFaisabilite: String;
+    public client: String;
+    public typologie: String;
+    public charge: Number;
+    public debutDemande: Date;
+    public finDemande: Date;
+    public statut: String;
+    public dateDeFaisabilite: String;
 }

@@ -1,11 +1,11 @@
 export class CommandeResponseModel {
-    public Id: Number;
-    public N: String = '';
-    public Client: String = '';
-    public Typologie: String = '';
-    public Charge: Number = 0;
-    public DebutDemande: Date;
-    public FinDemande: Date;
-    public Statut: String = '';
-    public DateDeFaisabilite: String = '';
+    public id: Number;
+    public n: String = '';
+    public client: String;
+    public typologie: String;
+    public charge: Number;
+    public debutDemande: Date;
+    public finDemande: Date;
+    public statut: String;
+    public dateDeFaisabilite: String;
 }
