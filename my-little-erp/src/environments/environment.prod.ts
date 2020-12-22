@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
   api: {
-    url: "https://someurl.com",
+    url: "https://localhost:5001",
     routes: {
-      equipe: "/api/equipe/",
+      equipe: "/api/membre/",
       devis: "/api/devis/",
       commande: "/api/commande/"
     }
