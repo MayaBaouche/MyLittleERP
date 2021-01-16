@@ -25,10 +25,7 @@ export class EquipeFormComponent implements OnInit {
       this.teamMembers[0].Members = [];
       this.teamMembers[1].Members = []
     this.teamMembers[0].Members.push(user1,user2);
-    this.teamMembers[1].Members.push(user1,user2);*/
-  
-   
-  
+    this.teamMembers[1].Members.push(user1,user2);*/    
   }
 
   ngOnInit(): void {

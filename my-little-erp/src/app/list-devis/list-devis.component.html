@@ -1,0 +1,21 @@
+<button [routerLink]="['/devis-new']">Créer nouveau devis</button>
+<div class="container container-css">
+    <div class="row justify-content-start">
+      <div class="col-9">    
+        <div class="card-deck">
+          <div class="col-4 d-flex align-items-stretch" *ngFor="let d of devis | async; index as i">
+            <div class="card mt-5">
+              <div class="card-block card-contenu">
+                <h4 class="card-title font-type">Devis {{d.N}}</h4> 
+                <p class="card-text" style="font-weight: bold;">Prospect : {{d.Prospect}}</p>
+                <p class="card-text" style="font-weight: bold;">Charge : {{d.Charge}}</p>
+                <p class="card-text" style="font-weight: bold;">Statut : {{d.Statut}}</p>
+              </div>
+              <button [routerLink]="['/devis-view', d.Id]" class="btn btn-secondary">Détails</button>
+            </div> 
+          </div> 
+        </div>
+        <div *ngIf="isEmpty" class="alert alert-secondary" role="alert">Pas de devis disponibles pour le moment.</div>
+      </div>
+    </div>
+  </div>  

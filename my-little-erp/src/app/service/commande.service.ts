@@ -18,6 +18,10 @@ export class CommandeService {
       (environment.api.url + environment.api.routes.commande);
   }
 
+  GetCommandeById(id : number): Observable<CommandeResponseModel> {
+    return this.httpClient.get<CommandeResponseModel>
+      (environment.api.url + environment.api.routes.commande+"/"+id);
+  }
   CreateCommande(payload: CommandeRequestModel): Observable<CommandeResponseModel> {
     let httpOptions = {
       headers: new HttpHeaders({
