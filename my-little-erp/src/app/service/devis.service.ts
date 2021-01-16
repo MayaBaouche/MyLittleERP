@@ -52,7 +52,6 @@ export class DevisService {
   }
 
   DeleteDevis(id: string) : Observable<any>{
-
     return this.httpClient.delete<any>
       (environment.api.url + environment.api.routes.devis + "/" + id);
   }

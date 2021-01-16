@@ -1,14 +1,14 @@
 <!-- Composant formulaire, premier TP d'angular, partie HTML -->
 <div class="jumbotron">
-    <label>{{currentMode}} devis</label>
-    <div class="container" *ngIf="currentMode === 'Nouveau'">
+    <label>{{currentMode}} commande</label>
+    <div class="container" *ngIf="currentMode === 'Nouvelle'">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <!-- Le formulaire sera lié en action avec un bouton submit qui enclenchera la fonction onFormSubmit en lui envoyant les informations remplies par l'utilisateur -->
-                <form [formGroup]="devisForm">
+                <form [formGroup]="commandeForm">
                     <div class="form-group">
-                        <label>Prospect :</label>
-                        <input type="text" formControlName="Prospect" id="Prospect" class="form-control" required>
+                        <label>Client :</label>
+                        <input type="text" formControlName="Client" id="Client" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -22,12 +22,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Debut Demande :</label>
+                        <label>Début demandé :</label>
                         <input type="date" formControlName="DebutDemande" id="DebutDemande" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Fin Demande :</label>
+                        <label>Fin demandée :</label>
                         <input type="date" formControlName="FinDemande" id="FinDemande" class="form-control" required>
                     </div>
 
@@ -37,12 +37,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Chance :</label>
-                        <input type="text" formControlName="Chance" id="Chance" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>DateDeFaisabilite :</label>
+                        <label>Date de faisabilite :</label>
                         <input type="text" formControlName="DateDeFaisabilite" id="DateDeFaisabilite" class="form-control" required>
                     </div>
 
@@ -56,13 +51,13 @@
         </div>
     </div>    
 </div>
-<!-- Consultation d'un devis -->
-<div *ngIf="currentMode === 'Consultation' && currentDevis | async as d">
-    <label>Devis n° {{idDevis}}</label>
+<!-- Consultation d'une commande -->
+<div *ngIf="currentMode === 'Consultation' && currentCommande | async as d">
+    <label>Commande n° {{idCommande}}</label>
     <form [formGroup]="devisForm">
         <div class="form-group">
-            <label>Prospect :</label>
-            <input type="text" formControlName="Prospect" placeholder="{{d.Prospect}}">
+            <label>Client :</label>
+            <input type="text" formControlName="Client" placeholder="{{date.Client}}">
         </div>
         <div class="form-group">
             <label>Typologie :</label>
@@ -84,10 +79,7 @@
             <label>Statut :</label>
             <input type="text"   formControlName="Statut" placeholder="{{d.Statut}}">
         </div>
-        <div class="form-group">
-            <label>Chance :</label>
-            <input type="text"   formControlName="Chance" placeholder="{{d.Chance}}">
-        </div>
+
         <div class="form-group">
             <label>Date de faisabilité :</label>
             <input type="text"   formControlName="DateDeFaisabilite" placeholder="{{d.DateDeFaisabilite}}">

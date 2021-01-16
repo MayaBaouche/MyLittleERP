@@ -12,7 +12,6 @@ export class ListDevisComponent implements OnInit {
 
   public devis : Observable<DevisResponseModel[]>;
   public isEmpty : boolean = true; 
-  public id = '9';
   constructor(private service : DevisService) { }
 
   ngOnInit(): void {

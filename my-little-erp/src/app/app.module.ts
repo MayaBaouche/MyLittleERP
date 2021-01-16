@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { fakeBackendProvider } from 'src/app/helpers/fake-backend';
+import { fakeBackendProvider } from './helpers/fake-backend';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { from } from 'rxjs';
 import {RouterModule,Routes} from '@angular/router'
-import { JwtInterceptor } from 'src/app/helpers/jwt.interceptor';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { AppComponent } from './app.component';
 
 import { FooterComponent } from './formcomponent/footer/footer.component';
@@ -20,14 +20,16 @@ import { DevisService } from './service/devis.service';
 import { CommandeService } from './service/commande.service';
 import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AccountService } from 'src/app/service/account.service';
+import { AccountService } from './service/account.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './utils/about/about.component';
 import { ErrorComponent } from './utils/error/error.component';
 import { HomeComponent } from './utils/home/home.component';
 import { EquipeFormComponent } from './equipe-form/equipe-form.component';
-
+import {ListDevisModule} from './list-devis/list-devis.module';
+import { ListCommandeComponent } from './list-commande/list-commande.component';
+import { CommandeFormComponent } from './commande-form/commande-form.component';
 
 
 @Injectable()
@@ -47,21 +49,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 }
 
-
-import { HttpClientModule } from '@angular/common/http';
-import {ListDevisModule} from './list-devis/list-devis.module';
-import { AppRoutingModule } from './app-routing.module';
-
-import { AboutComponent } from './utils/about/about.component';
-import { ErrorComponent } from './utils/error/error.component';
-import { HomeComponent } from './utils/home/home.component';
-import { FooterComponent } from './formcomponent/footer/footer.component';
-import { HeaderComponent } from './formcomponent/header/header.component';
-import { from } from 'rxjs';
-import {RouterModule,Routes} from '@angular/router'
-import { WelcomeComponent } from './formcomponent/welcome/welcome.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +59,9 @@ import { WelcomeComponent } from './formcomponent/welcome/welcome.component';
     WelcomeComponent,
     HomeComponent,
 	DevisFormComponent,
-	EquipeFormComponent
+	EquipeFormComponent,
+	ListCommandeComponent,
+	CommandeFormComponent
   ],
   imports: [
     BrowserModule,

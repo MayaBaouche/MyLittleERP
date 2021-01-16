@@ -2,23 +2,10 @@ nav{
     margin-bottom: 0px;
     height : 5%;
 }
-span{
-    margin: 0%;
-    margin-left: 5%;
-    margin-right: 5%;
-    display: inline;
-}
-
-div{
-    margin :0%;
-    padding: 0%;
-    width:100%;
-    background-color: beige;
-}
-.selected {
-    background-color: rgb(240, 240, 109);
-}
-
-.notselected{
-    background-color: beige;
-}
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+  }

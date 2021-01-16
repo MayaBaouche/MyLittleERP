@@ -8,6 +8,8 @@ import {ErrorComponent} from './utils/error/error.component';
 import {AboutComponent} from './utils/about/about.component';
 import { DevisFormComponent } from './DevisForm/devis-form/devis-form.component';
 import { ListDevisComponent } from './list-devis/list-devis.component';
+import { CommandeFormComponent } from './commande-form/commande-form.component';
+import { ListCommandeComponent } from './list-commande/list-commande.component';
 import { AuthGuard } from './guard/auth.guard';
 import { EquipeFormComponent } from './equipe-form/equipe-form.component';
 
@@ -23,25 +25,29 @@ const appRoutes: Routes = [
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
   // équipe
-  { path: 'equipe', component: EquipeFormComponent // TODO change with right component name \o/
+  { path: 'equipe', component: EquipeFormComponent 
   },
   // devis
-  { path: 'devis-list', component: ListDevisComponent , canActivate: [AuthGuard] // TODO change with right component name \o/
+  { path: 'devis-list', component: ListDevisComponent,// canActivate: [AuthGuard] // TODO change with right component name \o/
   },
   { path: 'devis-new', component: DevisFormComponent
   },
   { path: 'devis-view/:id', component: DevisFormComponent 
   },
   // commande
-  { path: 'commande-list', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'commande-list', component: ListCommandeComponent 
   },
-  { path: 'commande-new', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'commande-new', component: CommandeFormComponent
   },
-  { path: 'commande-update', component: ErrorComponent // TODO change with right component name \o/
+  { path: 'commande-view/:id', component: CommandeFormComponent 
   },
   // others
   { path: 'about', component: AboutComponent
   },
+  {
+    path: 'signin',
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+  },  
   // errors
   { path: '404', component: ErrorComponent
   },
