@@ -51,8 +51,20 @@ export class DevisFormComponent implements OnInit {
         DebutDemande: ['', Validators.required],
         FinDemande: ['', Validators.required],
         Statut: ['', Validators.required],
-        Chance: ['', [Validators.required, Validators.email]],
+        Chance: ['', [Validators.required]],
         DateDeFaisabilite: ['', Validators.required]
+      });
+      this.currentDevis.subscribe(value => {
+        this.devisUpdateForm.patchValue({
+          Prospect: value.prospect,
+          Typologie : value.typologie,
+          Charge : value.charge,
+          DebutDemande : value.debutDemande,
+          FinDemande : value.finDemande,
+          Statut : value.statut,
+          Chance : value.chance,
+          DateDeFaisabilite : value.dateDeFaisabilite
+        });
       });
     }
     else {
@@ -63,7 +75,7 @@ export class DevisFormComponent implements OnInit {
         DebutDemande: ['', Validators.required],
         FinDemande: ['', Validators.required],
         Statut: ['', Validators.required],
-        Chance: ['', [Validators.required, Validators.email]],
+        Chance: ['', [Validators.required]],
         DateDeFaisabilite: ['', Validators.required]
       });
     }
@@ -72,10 +84,12 @@ export class DevisFormComponent implements OnInit {
   onSubmit() {
     if (this.devisForm.status === 'INVALID') {
       this.novalid = true;
-      this.errorMessage = "Veuillez vérifier les différents champs du formulaire, le mail doit être sous la forme de mail@mail.extension";
+      this.errorMessage = "Veuillez vérifier les différents champs du formulaire";
     }
     else {
+      this.devisRequest = new DevisRequestModel();
       this.devisRequest.prospect = this.devisForm.value.Prospect;
+      this.devisRequest.n = "Opportunité N°";
       this.devisRequest.typologie = this.devisForm.value.Typologie;
       this.devisRequest.charge = this.devisForm.value.Charge;
       this.devisRequest.debutDemande = this.devisForm.value.DebutDemande;
@@ -85,7 +99,7 @@ export class DevisFormComponent implements OnInit {
       this.devisRequest.dateDeFaisabilite = this.devisForm.value.DateDeFaisabilite;
       this.novalid = false;
       console.log(this.devisForm.status);
-      this.service.CreateDevis(this.devisRequest);
+      this.service.CreateDevis(this.devisRequest).subscribe( () => this.backToDevis());
     }
   }
 
@@ -101,23 +115,27 @@ export class DevisFormComponent implements OnInit {
     this.router.navigate(['/devis-list']);
   }
 
-  updateDevis(idDevis : string) : Observable<DevisResponseModel>
+  updateDevis(idDevis : string)
   {
     if (this.devisUpdateForm.status === 'INVALID') {
       this.novalid = true;
-      this.errorMessage = "Veuillez vérifier les différents champs du formulaire, le mail doit être sous la forme de mail@mail.extension";
+      this.errorMessage = "Veuillez vérifier les différents champs du formulaire";
       return; 
     }
     else {
-      this.updatedDevis.Prospect = this.devisUpdateForm.value.Prospect;
-      this.updatedDevis.Typologie = this.devisUpdateForm.value.Typologie;
-      this.updatedDevis.Charge = this.devisUpdateForm.value.Charge;
-      this.updatedDevis.DebutDemande = this.devisUpdateForm.value.DebutDemande;
-      this.updatedDevis.FinDemande = this.devisUpdateForm.value.FinDemande;
-      this.updatedDevis.Statut = this.devisUpdateForm.value.Statut;
-      this.updatedDevis.Chance = this.devisUpdateForm.value.Chance;
-      this.updatedDevis.DateDeFaisabilite = this.devisUpdateForm.value.DateDeFaisabilite;
-      return this.service.UpdateDevis(this.updatedDevis, idDevis); 
+      this.updatedDevis = new DevisRequestModel();
+      this.updatedDevis.id = this.idDevis;
+      this.updatedDevis.n = "Opportunité N°"+this.idDevis;
+      this.updatedDevis.prospect = this.devisUpdateForm.value.Prospect;
+      this.updatedDevis.typologie = this.devisUpdateForm.value.Typologie;
+      this.updatedDevis.charge = this.devisUpdateForm.value.Charge;
+      this.updatedDevis.debutDemande = this.devisUpdateForm.value.DebutDemande;
+      this.updatedDevis.finDemande = this.devisUpdateForm.value.FinDemande;
+      this.updatedDevis.statut = this.devisUpdateForm.value.Statut;
+      this.updatedDevis.chance = this.devisUpdateForm.value.Chance;
+      this.updatedDevis.dateDeFaisabilite = this.devisUpdateForm.value.DateDeFaisabilite;
+      console.log(this.updatedDevis);
+      this.service.UpdateDevis(this.updatedDevis, idDevis).subscribe( () => this.backToDevis());
     }
   }
 }

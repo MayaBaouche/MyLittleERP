@@ -6,12 +6,12 @@
           <div class="col-4 d-flex align-items-stretch" *ngFor="let c of commandes | async; index as i">
             <div class="card mt-5">
               <div class="card-block card-contenu">
-                <h4 class="card-title font-type">Commande {{c.N}}</h4> 
-                <p class="card-text" style="font-weight: bold;">Client : {{c.Client}}</p>
-                <p class="card-text" style="font-weight: bold;">Charge : {{c.Charge}}</p>
-                <p class="card-text" style="font-weight: bold;">Statut : {{c.Statut}}</p>
+                <h4 class="card-title font-type">Commande {{c.n}}</h4> 
+                <p class="card-text" style="font-weight: bold;">Client : {{c.client}}</p>
+                <p class="card-text" style="font-weight: bold;">Charge : {{c.charge}}</p>
+                <p class="card-text" style="font-weight: bold;">Statut : {{c.statut}}</p>
               </div>
-              <button [routerLink]="['/commande-view', c.Id]" class="btn btn-secondary">Détails</button>
+              <button [routerLink]="['/commande-view', c.id]" class="btn btn-secondary">Détails</button>
             </div> 
           </div> 
         </div>

@@ -6,12 +6,12 @@
           <div class="col-4 d-flex align-items-stretch" *ngFor="let d of devis | async; index as i">
             <div class="card mt-5">
               <div class="card-block card-contenu">
-                <h4 class="card-title font-type">Devis {{d.N}}</h4> 
-                <p class="card-text" style="font-weight: bold;">Prospect : {{d.Prospect}}</p>
-                <p class="card-text" style="font-weight: bold;">Charge : {{d.Charge}}</p>
-                <p class="card-text" style="font-weight: bold;">Statut : {{d.Statut}}</p>
+                <h4 class="card-title font-type">Devis {{d.n}}</h4> 
+                <p class="card-text" style="font-weight: bold;">Prospect : {{d.prospect}}</p>
+                <p class="card-text" style="font-weight: bold;">Charge : {{d.charge}}</p>
+                <p class="card-text" style="font-weight: bold;">Statut : {{d.statut}}</p>
               </div>
-              <button [routerLink]="['/devis-view', d.Id]" class="btn btn-secondary">Détails</button>
+              <button [routerLink]="['/devis-view', d.id]" class="btn btn-secondary">Détails</button>
             </div> 
           </div> 
         </div>

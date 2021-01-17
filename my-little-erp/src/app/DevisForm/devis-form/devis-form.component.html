@@ -18,7 +18,7 @@
 
                     <div class="form-group">
                         <label>Charge :</label>
-                        <input type="text" formControlName="Charge" id="Charge" class="form-control" required>
+                        <input type="number" formControlName="Charge" id="Charge" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -38,7 +38,7 @@
 
                     <div class="form-group">
                         <label>Chance :</label>
-                        <input type="text" formControlName="Chance" id="Chance" class="form-control" required>
+                        <input input type="number" step="0.01" formControlName="Chance" id="Chance" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -57,42 +57,42 @@
     </div>    
 </div>
 <!-- Consultation d'un devis -->
-<div *ngIf="currentMode === 'Consultation' && currentDevis | async as d">
+<div *ngIf="currentMode === 'Consultation'">
     <label>Devis n° {{idDevis}}</label>
-    <form [formGroup]="devisForm">
+    <form [formGroup]="devisUpdateForm">
         <div class="form-group">
-            <label>Prospect :</label>
-            <input type="text" formControlName="Prospect" placeholder="{{d.Prospect}}">
+            <label>Prospect : </label>
+            <input type="text" formControlName="Prospect" >
         </div>
         <div class="form-group">
             <label>Typologie :</label>
-            <input type="text" formControlName="Typologie" placeholder="{{d.Typologie}}">
+            <input type="text" formControlName="Typologie">
         </div>
         <div class="form-group">
             <label>Charge :</label>
-            <input type="text"  formControlName="Charge" placeholder="{{d.Charge}}">
+            <input type="number"  formControlName="Charge" >
         </div>
         <div class="form-group">
             <label>Début demandé :</label>
-            <input type="text"  formControlName="DebutDemande" placeholder="{{d.DebutDemande}}">
+            <input type="date"  formControlName="DebutDemande" >
         </div>
         <div class="form-group">
             <label>Fin demandée :</label>
-            <input type="text"   formControlName="FinDemande" placeholder="{{d.FinDemande}}">
+            <input type="date"   formControlName="FinDemande" >
         </div>
         <div class="form-group">
             <label>Statut :</label>
-            <input type="text"   formControlName="Statut" placeholder="{{d.Statut}}">
+            <input type="text"   formControlName="Statut">
         </div>
         <div class="form-group">
             <label>Chance :</label>
-            <input type="text"   formControlName="Chance" placeholder="{{d.Chance}}">
+            <input input type="number" step="0.01" formControlName="Chance" >
         </div>
         <div class="form-group">
             <label>Date de faisabilité :</label>
-            <input type="text"   formControlName="DateDeFaisabilite" placeholder="{{d.DateDeFaisabilite}}">
+            <input type="text"   formControlName="DateDeFaisabilite">
         </div>
-        <button type="button" class="btn btn-primary" (click)="updateDevis(d.Id)">Mettre à jour</button>            
+        <button type="button" class="btn btn-primary" (click)="updateDevis(idDevis)">Mettre à jour</button>            
         <div *ngIf="novalid">{{ errorMessage }}</div>
     </form>    
 </div>

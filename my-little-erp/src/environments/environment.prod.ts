@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   api: {
-    url: "http://someurl.com",
+    url: "https://localhost:5001",
     routes: {
-      equipe: "/api/membre/",
-      devis: "/api/devis/",
-      commande: "/api/commande/"
+      equipe: "/api/membre",
+      devis: "/api/devis",
+      commande: "/api/commande"
     }
   }
 };

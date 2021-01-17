@@ -1,5 +1,6 @@
 export class DevisRequestModel {
     public id: Number;
+    public n: String;
     public prospect: String;
     public typologie: String;
     public charge: Number;

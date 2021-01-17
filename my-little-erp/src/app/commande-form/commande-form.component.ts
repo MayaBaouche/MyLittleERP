@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CommandeRequestModel } from '../api-model/commande-request-model';
-import { CommandeResponseModel } from '../api-model/commande-response-model';
 import { CommandeService } from '../service/commande.service';
+import { CommandeRequestModel } from'../api-model/commande-request-model';
+import { CommandeResponseModel } from '../api-model/commande-response-model';
 
 @Component({
   selector: 'app-commande-form',
   templateUrl: './commande-form.component.html',
   styleUrls: ['./commande-form.component.css']
 })
+
 export class CommandeFormComponent implements OnInit {
 
   commandeForm: FormGroup;
@@ -20,7 +21,7 @@ export class CommandeFormComponent implements OnInit {
   currentMode: string = '';
 
   idCommande: number;
-  currentCommande: Observable<CommandeRequestModel>;
+  currentCommande: Observable<CommandeResponseModel>;
   updatedCommande : CommandeRequestModel; 
 
   novalid: boolean = false;
@@ -31,7 +32,7 @@ export class CommandeFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('id') == null) {
-      this.currentMode = 'Nouvelle';
+      this.currentMode = 'Nouveau';
     }
     else {
       this.currentMode = 'Consultation';
@@ -42,27 +43,36 @@ export class CommandeFormComponent implements OnInit {
   buildForm(typeOfForm: string) {
     if (typeOfForm == 'Consultation') {
       this.idCommande = +this.route.snapshot.paramMap.get('id');
-      this.currentCommande = this.getCurrentDevis();
+      this.currentCommande = this.getCurrentCommande();
       this.commandeUpdateForm = this.formBuilder.group({
-        Prospect: ['', Validators.required],
+        Client: ['', Validators.required],
         Typologie: ['', Validators.required],
         Charge: ['', Validators.required],
         DebutDemande: ['', Validators.required],
         FinDemande: ['', Validators.required],
         Statut: ['', Validators.required],
-        Chance: ['', [Validators.required, Validators.email]],
         DateDeFaisabilite: ['', Validators.required]
+      });
+      this.currentCommande.subscribe(value => {
+        this.commandeUpdateForm.patchValue({
+          Client: value.client,
+          Typologie : value.typologie,
+          Charge : value.charge,
+          DebutDemande : value.debutDemande,
+          FinDemande : value.finDemande,
+          Statut : value.statut,
+          DateDeFaisabilite : value.dateDeFaisabilite
+        });
       });
     }
     else {
       this.commandeForm = this.formBuilder.group({
-        Prospect: ['', Validators.required],
+        Client: ['', Validators.required],
         Typologie: ['', Validators.required],
         Charge: ['', Validators.required],
         DebutDemande: ['', Validators.required],
         FinDemande: ['', Validators.required],
         Statut: ['', Validators.required],
-        Chance: ['', [Validators.required, Validators.email]],
         DateDeFaisabilite: ['', Validators.required]
       });
     }
@@ -71,50 +81,56 @@ export class CommandeFormComponent implements OnInit {
   onSubmit() {
     if (this.commandeForm.status === 'INVALID') {
       this.novalid = true;
-      this.errorMessage = "Veuillez vérifier les différents champs du formulaire, le mail doit être sous la forme de mail@mail.extension";
+      this.errorMessage = "Veuillez vérifier les différents champs du formulaire";
     }
     else {
-      this.commandeRequest.Client = this.commandeForm.value.Client;
-      this.commandeRequest.Typologie = this.commandeForm.value.Typologie;
-      this.commandeRequest.Charge = this.commandeForm.value.Charge;
-      this.commandeRequest.DebutDemande = this.commandeForm.value.DebutDemande;
-      this.commandeRequest.FinDemande = this.commandeForm.value.FinDemande;
-      this.commandeRequest.Statut = this.commandeForm.value.Statut;
-      this.commandeRequest.DateDeFaisabilite = this.commandeForm.value.DateDeFaisabilite;
+      this.commandeRequest = new CommandeRequestModel();
+      this.commandeRequest.client = this.commandeForm.value.Client;
+      this.commandeRequest.n = "";
+      this.commandeRequest.typologie = this.commandeForm.value.Typologie;
+      this.commandeRequest.charge = this.commandeForm.value.Charge;
+      this.commandeRequest.debutDemande = this.commandeForm.value.DebutDemande;
+      this.commandeRequest.finDemande = this.commandeForm.value.FinDemande;
+      this.commandeRequest.statut = this.commandeForm.value.Statut;
+      this.commandeRequest.dateDeFaisabilite = this.commandeForm.value.DateDeFaisabilite;
       this.novalid = false;
       console.log(this.commandeForm.status);
-      this.service.CreateCommande(this.commandeRequest);
+      this.service.CreateCommande(this.commandeRequest).subscribe( () => this.backToCommande());
     }
   }
 
-  resetForm(devisForm: FormGroup) {
-    devisForm.reset();
+  resetForm(commandeForm: FormGroup) {
+    commandeForm.reset();
   }
 
-  getCurrentDevis(): Observable<CommandeResponseModel> {
+  getCurrentCommande(): Observable<CommandeResponseModel> {
     return this.service.GetCommandeById(this.idCommande);
   }
 
-  backToDevis() {
-    this.router.navigate(['/devis-list']);
+  backToCommande() {
+    this.router.navigate(['/commande-list']);
   }
 
-  updateDevis(idDevis : string) : Observable<CommandeResponseModel>
+  updateCommande(idCommande : string)
   {
     if (this.commandeUpdateForm.status === 'INVALID') {
       this.novalid = true;
-      this.errorMessage = "Veuillez vérifier les différents champs du formulaire, le mail doit être sous la forme de mail@mail.extension";
+      this.errorMessage = "Veuillez vérifier les différents champs du formulaire";
       return; 
     }
     else {
-      this.updatedCommande.Client = this.commandeUpdateForm.value.Client;
-      this.updatedCommande.Typologie = this.commandeUpdateForm.value.Typologie;
-      this.updatedCommande.Charge = this.commandeUpdateForm.value.Charge;
-      this.updatedCommande.DebutDemande = this.commandeUpdateForm.value.DebutDemande;
-      this.updatedCommande.FinDemande = this.commandeUpdateForm.value.FinDemande;
-      this.updatedCommande.Statut = this.commandeUpdateForm.value.Statut;
-      this.updatedCommande.DateDeFaisabilite = this.commandeUpdateForm.value.DateDeFaisabilite;
-      return this.service.UpdateCommande(this.updatedCommande, idDevis); 
+      this.updatedCommande = new CommandeRequestModel();
+      this.updatedCommande.id = this.idCommande;
+      this.updatedCommande.n = this.idCommande+"";
+      this.updatedCommande.client = this.commandeUpdateForm.value.Client;
+      this.updatedCommande.typologie = this.commandeUpdateForm.value.Typologie;
+      this.updatedCommande.charge = this.commandeUpdateForm.value.Charge;
+      this.updatedCommande.debutDemande = this.commandeUpdateForm.value.DebutDemande;
+      this.updatedCommande.finDemande = this.commandeUpdateForm.value.FinDemande;
+      this.updatedCommande.statut = this.commandeUpdateForm.value.Statut;
+      this.updatedCommande.dateDeFaisabilite = this.commandeUpdateForm.value.DateDeFaisabilite;
+      console.log(this.updatedCommande);
+      this.service.UpdateCommande(this.updatedCommande, idCommande).subscribe( () => this.backToCommande());
     }
   }
 }
