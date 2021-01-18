@@ -94,7 +94,7 @@
                     <input type="text"   formControlName="DateDeFaisabilite">
                 </div>
                 <div class="btn-toolbar">
-                    <button type="button" class="btn btn-primary" (click)="deleteStuff(idCommande)">Supprimer</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteStuff(idCommande)">Supprimer</button>
                     <button type="button" class="btn btn-primary" (click)="updateCommande(idCommande)">Mettre à jour</button>            
                 </div>
                 <div *ngIf="novalid">{{ errorMessage }}</div>

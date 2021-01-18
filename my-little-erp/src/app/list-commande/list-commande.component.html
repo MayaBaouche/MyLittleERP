@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <button [routerLink]="['/commande-new']">Créer une nouvelle commande</button>
+      <button [routerLink]="['/commande-new']" class="btn btn-primary">Créer une nouvelle commande</button>
     </div>
   </div>  
   <div *ngIf="isEmpty" class="alert alert-secondary" role="alert">Pas de commandes disponibles pour le moment.</div>
