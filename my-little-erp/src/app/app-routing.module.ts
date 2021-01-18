@@ -25,29 +25,29 @@ const appRoutes: Routes = [
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
   // équipe
-  { path: 'equipe', component: EquipeFormComponent 
+  { path: 'equipe', component: EquipeFormComponent, canActivate: [AuthGuard]
   },
   // devis
-  { path: 'devis-list', component: ListDevisComponent,// canActivate: [AuthGuard] // TODO change with right component name \o/
+  { path: 'devis-list', component: ListDevisComponent, canActivate: [AuthGuard]
   },
-  { path: 'devis-new', component: DevisFormComponent
+  { path: 'devis-new', component: DevisFormComponent, canActivate: [AuthGuard]
   },
-  { path: 'devis-view/:id', component: DevisFormComponent 
+  { path: 'devis-view/:id', component: DevisFormComponent , canActivate: [AuthGuard]
   },
   // commande
-  { path: 'commande-list', component: ListCommandeComponent 
+  { path: 'commande-list', component: ListCommandeComponent , canActivate: [AuthGuard]
   },
-  { path: 'commande-new', component: CommandeFormComponent
+  { path: 'commande-new', component: CommandeFormComponent, canActivate: [AuthGuard]
   },
-  { path: 'commande-view/:id', component: CommandeFormComponent 
+  { path: 'commande-view/:id', component: CommandeFormComponent , canActivate: [AuthGuard]
   },
   // others
   { path: 'about', component: AboutComponent
   },
   {
-    path: 'signin',
+    path: 'account/register',
     loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
-  },  
+  },
   // errors
   { path: '404', component: ErrorComponent
   },
