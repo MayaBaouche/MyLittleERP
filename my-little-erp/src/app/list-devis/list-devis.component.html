@@ -1,21 +1,27 @@
-<button [routerLink]="['/devis-new']">Créer nouveau devis</button>
-<div class="container container-css">
-    <div class="row justify-content-start">
-      <div class="col-9">    
-        <div class="card-deck">
-          <div class="col-4 d-flex align-items-stretch" *ngFor="let d of devis | async; index as i">
-            <div class="card mt-5">
-              <div class="card-block card-contenu">
-                <h4 class="card-title font-type">Devis {{d.n}}</h4> 
-                <p class="card-text" style="font-weight: bold;">Prospect : {{d.prospect}}</p>
-                <p class="card-text" style="font-weight: bold;">Charge : {{d.charge}}</p>
-                <p class="card-text" style="font-weight: bold;">Statut : {{d.statut}}</p>
-              </div>
-              <button [routerLink]="['/devis-view', d.id]" class="btn btn-secondary">Détails</button>
-            </div> 
-          </div> 
-        </div>
-        <div *ngIf="isEmpty" class="alert alert-secondary" role="alert">Pas de devis disponibles pour le moment.</div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <button [routerLink]="['/devis-new']">Créer un nouveau devis</button>
     </div>
   </div>  
+  <div *ngIf="isEmpty" class="alert alert-secondary" role="alert">Pas de devis disponibles pour le moment.</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex align-items-stretch" *ngFor="let d of devis | async; index as i">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Devis {{c.n}}</h4>
+          </div>
+          <div class="panel-body">
+            <p class="card-text" style="font-weight: bold;">Prospect : {{d.prospect}}</p>
+            <p class="card-text" style="font-weight: bold;">Charge : {{d.charge}}</p>
+            <p class="card-text" style="font-weight: bold;">Statut : {{d.statut}}</p>
+          </div>
+          <div class="panel-footer">
+            <button [routerLink]="['/devis-view', c.id]" class="btn btn-secondary">Détails</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

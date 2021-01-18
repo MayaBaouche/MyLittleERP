@@ -32,7 +32,7 @@ export class CommandeFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('id') == null) {
-      this.currentMode = 'Nouveau';
+      this.currentMode = 'Nouvelle';
     }
     else {
       this.currentMode = 'Consultation';
@@ -109,6 +109,10 @@ export class CommandeFormComponent implements OnInit {
 
   backToCommande() {
     this.router.navigate(['/commande-list']);
+  }
+
+  deleteStuff(idCommande : string){
+    this.service.DeleteCommande(idCommande).subscribe(()=> this.backToCommande());
   }
 
   updateCommande(idCommande : string)

@@ -115,6 +115,9 @@ export class DevisFormComponent implements OnInit {
     this.router.navigate(['/devis-list']);
   }
 
+  deleteStuff(idDevis : string){
+    this.service.DeleteDevis(idDevis).subscribe(()=> this.backToDevis());
+  }
   updateDevis(idDevis : string)
   {
     if (this.devisUpdateForm.status === 'INVALID') {

@@ -16,7 +16,7 @@ export class ListCommandeComponent implements OnInit {
 
   ngOnInit(): void {
     this.commandes = this.service.GetCommande(); 
-    if (this.commandes != null)
+    if (this.commandes != null && this.commandes != undefined)
       this.isEmpty = false;
   }
 }

@@ -1,11 +1,15 @@
 <!-- Composant formulaire, premier TP d'angular, partie HTML -->
 <div class="jumbotron">
-    <label>{{currentMode}} commande</label>
-    <div class="container" *ngIf="currentMode === 'Nouveau'">
+    <div class="container" *ngIf="currentMode === 'Nouvelle'">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>{{currentMode}} commande</h2>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <!-- Le formulaire sera lié en action avec un bouton submit qui enclenchera la fonction onFormSubmit en lui envoyant les informations remplies par l'utilisateur -->
-                <form [formGroup]="commandeForm">
+                <form [formGroup]="commandeForm" class="form-horizontal">
                     <div class="form-group">
                         <label>Client :</label>
                         <input type="text" formControlName="Client" id="Client" class="form-control" required>
@@ -22,12 +26,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Debut Demande :</label>
+                        <label>Debut demandé :</label>
                         <input type="date" formControlName="DebutDemande" id="DebutDemande" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Fin Demande :</label>
+                        <label>Fin demandée :</label>
                         <input type="date" formControlName="FinDemande" id="FinDemande" class="form-control" required>
                     </div>
 
@@ -37,14 +41,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label>DateDeFaisabilite :</label>
+                        <label>Date de faisabilité :</label>
                         <input type="text" formControlName="DateDeFaisabilite" id="DateDeFaisabilite" class="form-control" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="btn-toolbar">
                         <br>
-                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Créer commande</button>
                         <button type="button" class="btn btn-danger" (click)="resetForm(commandeForm)">Reset</button>
+                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Créer commande</button>
                     </div>
                 </form>
                 <div *ngIf="novalid">{{ errorMessage }}</div>
@@ -52,38 +56,49 @@
     </div>    
 </div>
 <!-- Consultation d'un commande -->
-<div *ngIf="currentMode === 'Consultation'">
-    <label>Commande n° {{idCommande}}</label>
-    <form [formGroup]="commandeUpdateForm">
-        <div class="form-group">
-            <label>Client : </label>
-            <input type="text" formControlName="Client" >
+<div class="container" *ngIf="currentMode === 'Consultation'">
+    <div class="row">
+        <div class="col-md-6">            
+            <h2>Commande n° {{idCommande}}</h2>
         </div>
-        <div class="form-group">
-            <label>Typologie :</label>
-            <input type="text" formControlName="Typologie">
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form [formGroup]="commandeUpdateForm">
+                <div class="form-group">
+                    <label>Client : </label>
+                    <input type="text" formControlName="Client" >
+                </div>
+                <div class="form-group">
+                    <label>Typologie :</label>
+                    <input type="text" formControlName="Typologie">
+                </div>
+                <div class="form-group">
+                    <label>Charge :</label>
+                    <input type="number"  formControlName="Charge" >
+                </div>
+                <div class="form-group">
+                    <label>Début demandé :</label>
+                    <input type="date"  formControlName="DebutDemande" >
+                </div>
+                <div class="form-group">
+                    <label>Fin demandée :</label>
+                    <input type="date"   formControlName="FinDemande" >
+                </div>
+                <div class="form-group">
+                    <label>Statut :</label>
+                    <input type="text"   formControlName="Statut">
+                </div>
+                <div class="form-group">
+                    <label>Date de faisabilité :</label>
+                    <input type="text"   formControlName="DateDeFaisabilite">
+                </div>
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-primary" (click)="deleteStuff(idCommande)">Supprimer</button>
+                    <button type="button" class="btn btn-primary" (click)="updateCommande(idCommande)">Mettre à jour</button>            
+                </div>
+                <div *ngIf="novalid">{{ errorMessage }}</div>
+            </form>   
         </div>
-        <div class="form-group">
-            <label>Charge :</label>
-            <input type="number"  formControlName="Charge" >
-        </div>
-        <div class="form-group">
-            <label>Début demandé :</label>
-            <input type="date"  formControlName="DebutDemande" >
-        </div>
-        <div class="form-group">
-            <label>Fin demandée :</label>
-            <input type="date"   formControlName="FinDemande" >
-        </div>
-        <div class="form-group">
-            <label>Statut :</label>
-            <input type="text"   formControlName="Statut">
-        </div>
-        <div class="form-group">
-            <label>Date de faisabilité :</label>
-            <input type="text"   formControlName="DateDeFaisabilite">
-        </div>
-        <button type="button" class="btn btn-primary" (click)="updateCommande(idCommande)">Mettre à jour</button>            
-        <div *ngIf="novalid">{{ errorMessage }}</div>
-    </form>    
+    </div>    
 </div>

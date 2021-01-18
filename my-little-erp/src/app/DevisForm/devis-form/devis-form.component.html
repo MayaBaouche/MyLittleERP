@@ -1,7 +1,11 @@
 <!-- Composant formulaire, premier TP d'angular, partie HTML -->
 <div class="jumbotron">
-    <label>{{currentMode}} devis</label>
-    <div class="container" *ngIf="currentMode === 'Nouveau'">
+    <div class="container" *ngIf="currentMode === 'Nouveau'">        
+        <div class="row">
+            <div class="col-md-6">            
+                <h2>{{currentMode}} devis</h2>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <!-- Le formulaire sera lié en action avec un bouton submit qui enclenchera la fonction onFormSubmit en lui envoyant les informations remplies par l'utilisateur -->
@@ -22,12 +26,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Debut Demande :</label>
+                        <label>Debut demandé :</label>
                         <input type="date" formControlName="DebutDemande" id="DebutDemande" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Fin Demande :</label>
+                        <label>Fin demandée :</label>
                         <input type="date" formControlName="FinDemande" id="FinDemande" class="form-control" required>
                     </div>
 
@@ -42,57 +46,68 @@
                     </div>
 
                     <div class="form-group">
-                        <label>DateDeFaisabilite :</label>
+                        <label>Date de faisabilité :</label>
                         <input type="text" formControlName="DateDeFaisabilite" id="DateDeFaisabilite" class="form-control" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="btn-toolbar">
                         <br>
-                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Créer devis</button>
                         <button type="button" class="btn btn-danger" (click)="resetForm(devisForm)">Reset</button>
+                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Créer devis</button>
                     </div>
                 </form>
                 <div *ngIf="novalid">{{ errorMessage }}</div>
         </div>
     </div>    
 </div>
-<!-- Consultation d'un devis -->
-<div *ngIf="currentMode === 'Consultation'">
-    <label>Devis n° {{idDevis}}</label>
-    <form [formGroup]="devisUpdateForm">
-        <div class="form-group">
-            <label>Prospect : </label>
-            <input type="text" formControlName="Prospect" >
+<div class="container" *ngIf="currentMode === 'Consultation'">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Devis n° {{idDevis}}</h2>
         </div>
-        <div class="form-group">
-            <label>Typologie :</label>
-            <input type="text" formControlName="Typologie">
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">        
+            <!-- Consultation d'un devis -->                
+            <form [formGroup]="devisUpdateForm">
+                <div class="form-group">
+                    <label>Prospect : </label>
+                    <input type="text" formControlName="Prospect" >
+                </div>
+                <div class="form-group">
+                    <label>Typologie :</label>
+                    <input type="text" formControlName="Typologie">
+                </div>
+                <div class="form-group">
+                    <label>Charge :</label>
+                    <input type="number"  formControlName="Charge" >
+                </div>
+                <div class="form-group">
+                    <label>Début demandé :</label>
+                    <input type="date"  formControlName="DebutDemande" >
+                </div>
+                <div class="form-group">
+                    <label>Fin demandée :</label>
+                    <input type="date"   formControlName="FinDemande" >
+                </div>
+                <div class="form-group">
+                    <label>Statut :</label>
+                    <input type="text"   formControlName="Statut">
+                </div>
+                <div class="form-group">
+                    <label>Chance :</label>
+                    <input input type="number" step="0.01" formControlName="Chance" >
+                </div>
+                <div class="form-group">
+                    <label>Date de faisabilité :</label>
+                    <input type="text"   formControlName="DateDeFaisabilite">
+                </div>
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-danger" (click)="deleteStuff(idDevis)">Reset</button>
+                    <button type="button" class="btn btn-primary" (click)="updateDevis(idDevis)">Mettre à jour</button>               
+                </div>
+                <div *ngIf="novalid">{{ errorMessage }}</div>
+            </form>  
         </div>
-        <div class="form-group">
-            <label>Charge :</label>
-            <input type="number"  formControlName="Charge" >
-        </div>
-        <div class="form-group">
-            <label>Début demandé :</label>
-            <input type="date"  formControlName="DebutDemande" >
-        </div>
-        <div class="form-group">
-            <label>Fin demandée :</label>
-            <input type="date"   formControlName="FinDemande" >
-        </div>
-        <div class="form-group">
-            <label>Statut :</label>
-            <input type="text"   formControlName="Statut">
-        </div>
-        <div class="form-group">
-            <label>Chance :</label>
-            <input input type="number" step="0.01" formControlName="Chance" >
-        </div>
-        <div class="form-group">
-            <label>Date de faisabilité :</label>
-            <input type="text"   formControlName="DateDeFaisabilite">
-        </div>
-        <button type="button" class="btn btn-primary" (click)="updateDevis(idDevis)">Mettre à jour</button>            
-        <div *ngIf="novalid">{{ errorMessage }}</div>
-    </form>    
+    </div>
 </div>

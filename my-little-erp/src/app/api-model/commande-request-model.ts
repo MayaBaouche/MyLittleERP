@@ -1,4 +1,6 @@
 export class CommandeRequestModel {
+    public id : number; 
+    public n : string; 
     public client: String;
     public typologie: String;
     public charge: Number;
